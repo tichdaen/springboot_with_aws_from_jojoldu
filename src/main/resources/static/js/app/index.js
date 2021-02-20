@@ -55,6 +55,21 @@ var main = {
             alert('글이 수정되었습니다');
             window.location.href= '/';
         });
+    },
+
+    delete : function () {
+        var id = $('#id').val();
+
+        fetch('/api/v1/posts/' + id, {
+            method: "DELETE",
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(response => response.json())
+        .then(response => {
+            alert('글이 삭제되었습니다.');
+            window.location.href = '/';
+        })
     }
 
 };
