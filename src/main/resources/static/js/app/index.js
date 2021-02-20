@@ -36,6 +36,27 @@ var main = {
         });
     },
 
+    update : function () {
+        var data = {
+            title: $('#title').val(),
+            content: $('#content').val(),
+        }
+
+        var id = $('#id').val();
+
+        fetch('/api/v1/posts/' + id, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        }).then(response => response.json())
+        .then(response => {
+            alert('글이 수정되었습니다');
+            window.location.href= '/';
+        });
+    }
+
 };
 
 main.init();
